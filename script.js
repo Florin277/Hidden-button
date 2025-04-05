@@ -1,17 +1,17 @@
-function buttonOneFunction() {
-    document.getElementById("first").innerText="Castigator";
-    document.getElementById("second").innerText="";
-    document.getElementById("third").innerText="";
-    
-    
+let buttonColors = document.getElementById("button");
+let click = 0;
+const TENSECONDS_MS = 1000;
+const colors = ["yellow", "green", "red"];
+
+function changeColor() {
+    buttonColors.changeColor = function() {
+        buttonColors.style.background = colors[click % 3];
+        ++click;
+    }
 }
-function buttonTwoFunction() {
-    document.getElementById("second").innerText="Necastigator";
-    document.getElementById("first").innerText=" ";
-    document.getElementById("third").innerText="";
-}
-function buttonThreeFunction() {
-    document.getElementById("third").innerText ="Necastigator";
-    document.getElementById("first").innerText="";
-    document.getElementById("second").innerText="";
-}
+
+changeColor();
+
+setInterval(function() {
+    buttonColors.onclick();
+}, TENSECONDS_MS);
