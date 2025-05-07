@@ -1,53 +1,25 @@
+const text = ['Necastigator', 'Necastigator','Necastigator'];
+var buttons = document.getElementsByTagName('button');
+let pressed = 0;
 let click = 0;
-let changeText = 0;
+let winner = 0;
 
-function buttonOneFunction() {  
-    if (click == 3) {
-        ++changeText;
-        click = 0;
-    }
-    if (changeText % 3 == 0) {
-        document.getElementById("first").innerText="Castigator";
-        document.getElementById("second").innerText="";
-        document.getElementById("third").innerText="";
-    } else {
-        document.getElementById("first").innerText="Necastigator";
-        document.getElementById("second").innerText="";
-        document.getElementById("third").innerText="";
-    }
-    ++click;
+for (var i = 0; i < buttons.length; i++) {
+    (function (i) {
+        buttons[i].onclick = function () {
+            if (click % 3 == 0) {
+                text[winner] = "Necastigator";
+                winner = getRandomInt(3);
+                text[winner] = "Castigator";
+            }
+            buttons[pressed].innerHTML="";
+            buttons[i].innerHTML = text[i];
+            pressed = i;
+            ++click;
+        }
+    }(i)); 
 }
 
-function buttonTwoFunction() {
-    if (click == 3) {
-        ++changeText;
-        click = 0;
-    }
-    if (changeText % 3 == 1) {
-        document.getElementById("second").innerText="Castigator";
-        document.getElementById("first").innerText=" ";
-        document.getElementById("third").innerText="";
-    } else {
-        document.getElementById("second").innerText="Necastigator";
-        document.getElementById("first").innerText=" ";
-        document.getElementById("third").innerText="";
-    }      
-    ++click; 
-}
-
-function buttonThreeFunction() {
-    if (click == 3) {
-        ++changeText;
-        click = 0;
-    }
-    if (changeText % 3 == 2) {
-        document.getElementById("third").innerText ="Castigator";
-        document.getElementById("first").innerText="";
-        document.getElementById("second").innerText="";
-    } else {
-        document.getElementById("third").innerText ="Necastigator";
-        document.getElementById("first").innerText="";
-        document.getElementById("second").innerText="";
-    }
-    ++click;
+function getRandomInt(max) {
+    return Math.floor(Math.random()*max);
 }
