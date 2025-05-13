@@ -1,20 +1,20 @@
-const text = ['Necastigator', 'Necastigator','Necastigator'];
+const text = ['Unwinner', 'Unwinner','Unwinner'];
 const buttons = document.getElementsByTagName('button');
-let pressed = 0;
-let click = 0;
+let buttonPressed = 0;
+let numberPresses = 0;
 let winner = 0;
 
 function pressButton(buttonId) {
-    buttons[pressed].innerHTML="";
+    buttons[buttonPressed].innerHTML="";
     let x = parseInt(buttonId);
-    pressed = x;
-    if (click % 3 == 0) {
-        text[winner] = "Necastigator";
+    buttonPressed = x;
+    if (numberPresses % 3 == 0) {
+        text[winner] = "Unwinner";
         winner = getRandomInt(3);
-        text[winner] = "Castigator";
+        text[winner] = "Winner";
     }
-    ++click;
-    buttons[pressed].innerHTML=text[pressed];
+    ++numberPresses;
+    buttons[buttonPressed].innerHTML=text[buttonPressed];
 }
 
 function getRandomInt(max) {
